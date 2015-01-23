@@ -41,7 +41,7 @@ class Elvanto_Login_Widget extends WP_Widget {
 	public function form($instance) {
 		$title = !empty($instance['title']) ? $instance['title'] : __('New Title');
 		$subdomain = !empty($instance['subdomain']) ? $instance['subdomain'] : $instance['subdomain'];
-		$location = !empty($instance['location']) ? $instance['location'] : $instance['location'];
+		$location = !empty($instance['region']) ? $instance['region'] : $instance['region'];
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
