@@ -11,6 +11,7 @@
 
 class Elvanto_Login_Widget extends WP_Widget {
 
+	//Setup
 	function __construct() {
 		parent::__construct(
 			'elvanto_login_widget',
@@ -19,55 +20,57 @@ class Elvanto_Login_Widget extends WP_Widget {
 		);
 	}
 
+	// Output
 	public function widget($args, $instance) {
 		echo $args['before_widget'];
 		if (!empty($instance['title'])) {
 			echo $args['before_title'] . apply_filters('widget_title', $instance['title'] ). $args['after_title'];
 		}
-		echo '<form action="https://' . $instance['domain'] . '.' . $instance['location'] . '/login/" method="post">';
-		echo '<input type="hidden" name="redirect_to" value="https://' . $instance['domain'] . '.' . $instance['location'] . '/">';
+		echo '<form action="https://' . $instance['subdomain'] . '.' . $instance['region'] . '/login/" method="post">';
+		echo '<input type="hidden" name="redirect_to" value="https://' . $instance['subdomain'] . '.' . $instance['region'] . '/">';
 		echo '<p><label for="login_username">Username or Email</label><br><input type="text" name="login_username" id="login_username" autocomplete="off"></p>';
 		echo '<p><label for="login_password">Password</label><br><input type="password" name="login_password" id="login_password" autocomplete="off"></p>';
 		echo '<p><label><input type="checkbox" name="remember_me" value="1"> Remember me</label></p>';
 		echo '<p><button type="submit">Log In</button></p>';
 		echo '</form>';
-		echo '<p><a href="https://' . $instance['domain'] . '.' . $instance['location'] . '/login/?action=lostpassword">I forgot my password</a></p>';
+		echo '<p><a href="https://' . $instance['subdomain'] . '.' . $instance['region'] . '/login/?action=lostpassword">I forgot my password</a></p>';
 		echo $args['after_widget'];
 	}
 
+	//Input
 	public function form($instance) {
 		$title = !empty($instance['title']) ? $instance['title'] : __('New Title');
-		$domain = !empty($instance['domain']) ? $instance['domain'] : $instance['domain'];
+		$subdomain = !empty($instance['subdomain']) ? $instance['subdomain'] : $instance['subdomain'];
 		$location = !empty($instance['location']) ? $instance['location'] : $instance['location'];
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
+			<input class="widefat" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
 		</p>
-		<p>Display a title for your widget</p>
+		<p><?php _e('Display a title for your widget'); ?></p>
 		<p>
-			<label for="<?php echo $this->get_field_id('domain'); ?>"><?php _e('Domain:'); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id('domain'); ?>" name="<?php echo $this->get_field_name('domain'); ?>" type="text" value="<?php echo esc_attr($domain); ?>">
+			<label for="<?php echo $this->get_field_id('subdomain'); ?>"><?php _e('Sub Domain:'); ?></label> 
+			<input class="widefat" name="<?php echo $this->get_field_name('subdomain'); ?>" type="text" value="<?php echo esc_attr($subdomain); ?>">
 		</p>
-		<p>This is your account sub-domain of Elvanto</p>
+		<p><?php _e('This is your account sub domain of Elvanto'); ?></p>
 		<p>
-			<label for="<?php echo $this->get_field_id('location'); ?>"><?php _e('Location:'); ?></label> 
-			<select class="widefat" name="<?php echo $this->get_field_name('location'); ?>" id="<?php echo $this->get_field_id('location'); ?>">
-				<option value="elvanto.com.au"<?php selected( $instance['location'], 'elvanto.com.au'); ?>>.elvanto.com.au</option>
-				<option value="elvanto.net"<?php selected( $instance['location'], 'elvanto.net'); ?>>.elvanto.net</option>
-				<option value="elvanto.eu"<?php selected( $instance['location'], 'elvanto.eu'); ?>>.elvanto.eu</option>
+			<label for="<?php echo $this->get_field_id('region'); ?>"><?php _e('Region Domain:'); ?></label> 
+			<select class="widefat" name="<?php echo $this->get_field_name('region'); ?>">
+				<option value="elvanto.com.au"<?php selected($instance['region'], 'elvanto.com.au'); ?>>.elvanto.com.au</option>
+				<option value="elvanto.net"<?php selected($instance['region'], 'elvanto.net'); ?>>.elvanto.net</option>
+				<option value="elvanto.eu"<?php selected($instance['region'], 'elvanto.eu'); ?>>.elvanto.eu</option>
 			</select>
 		</p>
-		<p>This is your location domain of Elvanto</p>
-
+		<p><?php _e('This is your region domain of Elvanto'); ?></p>
 		<?php 
 	}
 
+	// Save
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
-		$instance['domain'] = (!empty($new_instance['domain'])) ? strip_tags($new_instance['domain']) : '';
-		$instance['location'] = (!empty($new_instance['location'])) ? strip_tags($new_instance['location']) : '';
+		$instance['subdomain'] = (!empty($new_instance['subdomain'])) ? strip_tags($new_instance['subdomain']) : '';
+		$instance['region'] = (!empty($new_instance['region'])) ? strip_tags($new_instance['region']) : '';
 		return $instance;
 	}
 
