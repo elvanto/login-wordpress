@@ -5,14 +5,15 @@ When installed, your users will be able to log directly into their Elvanto accou
 
 ## Setup
 
-1. Install Plugin.
-2. Go to Themes > Widgets in the WordPress Administration Panels.
-3. Open the sidebar, footer, or Theme section to which you wish to add the Elvanto Login Widget.
-4. Find the Elvanto Login Widget in the list of Widgets.
-5. Click and drag the Widget to the spot you wish it to appear.
-6. Display a title for your widget.
-7. Enter you account sub domain.
-8. Enter your region domain.
+1. Upload `elvanto-login.php` to the `/wp-content/plugins/` directory or install via WordPress Plugins search
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Go to Themes > Widgets in the WordPress Administration Panels.
+4. Open the sidebar, footer, or Theme section to which you wish to add the Elvanto Login Widget.
+5. Find the Elvanto Login Widget in the list of Widgets.
+6. Click and drag the Widget to the spot you wish it to appear.
+7. Display a title for your widget.
+8. Enter you account sub domain.
+9. Enter your region domain.
 
 ## Support
 
