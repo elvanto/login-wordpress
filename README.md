@@ -1,7 +1,7 @@
 # Elvanto Wordpress Login Widget
 
 This plugin adds an Elvanto login widget to your WordPress powered site.
-When installed, your users will be able to log directly into their Elvanto account directly from your site.
+When installed, your users will be able to log directly into their Elvanto account from your site.
 
 ## Setup
 
