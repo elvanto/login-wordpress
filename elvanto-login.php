@@ -11,7 +11,7 @@
 
 class ElvantoLoginWidget extends WP_Widget {
 
-    //Setup
+    // Setup
     function __construct() {
         parent::__construct(
             'elvanto_login_widget',
@@ -36,11 +36,10 @@ class ElvantoLoginWidget extends WP_Widget {
         echo '<p><button type="submit">Log In</button></p>';
         echo '</form>';
         echo '<p><a href="https://' . $instance['subdomain'] . '.' . $instance['region'] . '/login/?action=lostpassword">' . __('I forgot my password') . '</a></p>';
-        echo $args['after_widget'];
         echo '<p>' . __('Or login via') . ':</p>';
         echo '<p><a href="https://socialauth.elvanto.com/?service=facebook&amp;action=login&amp;redirect_to=https%3A%2F%2F' . $instance['subdomain'] . '.' . $instance['region'] . '%2Flogin%2F%3Fredirect_to%3D%252F" class="btn btn-el-fb"><i class="fa fa-lg fa-left fa-facebook"></i>Facebook</a></p>';
         echo '<p><a href="https://socialauth.elvanto.com/?service=google&amp;action=login&amp;redirect_to=https%3A%2F%2F' . $instance['subdomain'] . '.' . $instance['region'] . '%2Flogin%2F%3Fredirect_to%3D%252F" class="btn btn-el-g"><i class="fa fa-lg fa-left fa-google"></i>Google</a></p>';
-
+        echo $args['after_widget'];
     }
 
     // Input
@@ -61,7 +60,6 @@ class ElvantoLoginWidget extends WP_Widget {
         echo '<option value="elvanto.eu"' . selected($instance['region'], 'elvanto.eu') . '>.elvanto.eu</option>';
         echo '</select></p>';
         echo '<p>' . __('This is your region domain of Elvanto') . '</p>';
-
     }
 
     // Save

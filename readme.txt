@@ -29,6 +29,7 @@ When installed, your users will be able to log directly into their Elvanto accou
 == Changelog ==
 
 = 1.1 =
+* Added Facebook & Google login buttons
 * Code syntax & consistency improvements
 
 = 1.0 =
