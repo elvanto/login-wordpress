@@ -52,9 +52,9 @@ class ElvantoLoginWidget extends WP_Widget {
         echo '<p>' . __('This is your account sub domain of Elvanto') . '</p>';
         echo '<p><label for="' . $this->get_field_id('region') . '">' . __('Region Domain:') . '</label>';
         echo '<select class="widefat" name="' . $this->get_field_name('region') . '">';
-        echo '<option value="elvanto.com.au"' .  selected($instance['region'], 'elvanto.com.au') . '>.elvanto.com.au</option>';
-        echo '<option value="elvanto.net"' .  selected($instance['region'], 'elvanto.net') . '>.elvanto.net</option>';
-        echo '<option value="elvanto.eu"' .  selected($instance['region'], 'elvanto.eu') . '>.elvanto.eu</option>';
+        echo '<option value="elvanto.com.au"' . selected($instance['region'], 'elvanto.com.au') . '>.elvanto.com.au</option>';
+        echo '<option value="elvanto.net"' . selected($instance['region'], 'elvanto.net') . '>.elvanto.net</option>';
+        echo '<option value="elvanto.eu"' . selected($instance['region'], 'elvanto.eu') . '>.elvanto.eu</option>';
         echo '</select></p>';
         echo '<p>' . __('This is your region domain of Elvanto') . '</p>';
 
