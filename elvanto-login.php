@@ -37,9 +37,13 @@ class ElvantoLoginWidget extends WP_Widget {
         echo '</form>';
         echo '<p><a href="https://' . $instance['subdomain'] . '.' . $instance['region'] . '/login/?action=lostpassword">' . __('I forgot my password') . '</a></p>';
         echo $args['after_widget'];
+        echo '<p>' . __('Or login via') . ':</p>';
+        echo '<p><a href="https://socialauth.elvanto.com/?service=facebook&amp;action=login&amp;redirect_to=https%3A%2F%2F' . $instance['subdomain'] . '.' . $instance['region'] . '%2Flogin%2F%3Fredirect_to%3D%252F" class="btn btn-el-fb"><i class="fa fa-lg fa-left fa-facebook"></i>Facebook</a></p>';
+        echo '<p><a href="https://socialauth.elvanto.com/?service=google&amp;action=login&amp;redirect_to=https%3A%2F%2F' . $instance['subdomain'] . '.' . $instance['region'] . '%2Flogin%2F%3Fredirect_to%3D%252F" class="btn btn-el-g"><i class="fa fa-lg fa-left fa-google"></i>Google</a></p>';
+
     }
 
-    //Input
+    // Input
     public function form($instance) {
         $title = !empty($instance['title']) ? $instance['title'] : __('New Title');
         $subdomain = !empty($instance['subdomain']) ? $instance['subdomain'] : $instance['subdomain'];
