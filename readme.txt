@@ -2,12 +2,12 @@
 Contributors: Elvanto
 Tags: login, widget
 Requires at least: 3.0.1
-Tested up to: 4.9.0
+Tested up to: 5.4.0
 Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Quickly and easily let your users login to Elvanto directly from your WordPress powered site
+Quickly and easily let your users login to Elvanto from your WordPress powered site.
 
 == Description ==
 
@@ -16,8 +16,8 @@ When installed, your users will be able to log directly into their Elvanto accou
 
 == Installation ==
 
-1. Upload `elvanto-login.php` to the `/wp-content/plugins/` directory or install via WordPress Plugins search
-2. Activate the plugin through the 'Plugins' menu in WordPress
+1. Upload `elvanto-login.php` to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Go to Themes > Widgets in the WordPress Administration Panels.
 4. Open the sidebar, footer, or Theme section to which you wish to add the Elvanto Login Widget.
 5. Find the Elvanto Login Widget in the list of Widgets.
@@ -29,8 +29,8 @@ When installed, your users will be able to log directly into their Elvanto accou
 == Changelog ==
 
 = 1.1 =
-* Added Facebook & Google login buttons
-* Code syntax & consistency improvements
+* Added Facebook & Google login buttons.
+* Code syntax & consistency improvements.
 
 = 1.0 =
 * Initial Release.
