@@ -5,7 +5,7 @@
     Plugin URI: https://www.elvanto.com
     Description: Plugin for adding an Elvanto Login Widget to your Wordpress Site
     Author: Elvanto
-    Version: 1.1
+    Version: 1.2
     Author URI: https://www.elvanto.com
 */
 
@@ -36,9 +36,11 @@ class ElvantoLoginWidget extends WP_Widget {
         echo '<p><button type="submit">Log In</button></p>';
         echo '</form>';
         echo '<p><a href="https://' . $instance['subdomain'] . '.' . $instance['region'] . '/login/?action=lostpassword">' . __('I forgot my password') . '</a></p>';
-        echo '<p>' . __('Or login via') . ':</p>';
-        echo '<p><a href="https://socialauth.elvanto.com/?service=facebook&amp;action=login&amp;redirect_to=https%3A%2F%2F' . $instance['subdomain'] . '.' . $instance['region'] . '%2Flogin%2F%3Fredirect_to%3D%252F" class="btn btn-el-fb"><i class="fa fa-lg fa-left fa-facebook"></i>Facebook</a></p>';
-        echo '<p><a href="https://socialauth.elvanto.com/?service=google&amp;action=login&amp;redirect_to=https%3A%2F%2F' . $instance['subdomain'] . '.' . $instance['region'] . '%2Flogin%2F%3Fredirect_to%3D%252F" class="btn btn-el-g"><i class="fa fa-lg fa-left fa-google"></i>Google</a></p>';
+        if ($instance['includeSocialLinks'] == 'y') {
+            echo '<p>' . __('Or login via') . ':</p>';
+            echo '<p><a href="https://socialauth.elvanto.com/?service=facebook&amp;action=login&amp;redirect_to=https%3A%2F%2F' . $instance['subdomain'] . '.' . $instance['region'] . '%2Flogin%2F%3Fredirect_to%3D%252F" class="btn btn-el-fb"><i class="fa fa-lg fa-left fa-facebook"></i>Facebook</a></p>';
+            echo '<p><a href="https://socialauth.elvanto.com/?service=google&amp;action=login&amp;redirect_to=https%3A%2F%2F' . $instance['subdomain'] . '.' . $instance['region'] . '%2Flogin%2F%3Fredirect_to%3D%252F" class="btn btn-el-g"><i class="fa fa-lg fa-left fa-google"></i>Google</a></p>';
+        }
         echo $args['after_widget'];
     }
 
@@ -55,11 +57,17 @@ class ElvantoLoginWidget extends WP_Widget {
         echo '<p>' . __('This is your account sub domain of Elvanto') . '</p>';
         echo '<p><label for="' . $this->get_field_id('region') . '">' . __('Region Domain:') . '</label>';
         echo '<select class="widefat" name="' . $this->get_field_name('region') . '">';
-        echo '<option value="elvanto.com.au"' . selected($instance['region'], 'elvanto.com.au') . '>.elvanto.com.au</option>';
-        echo '<option value="elvanto.net"' . selected($instance['region'], 'elvanto.net') . '>.elvanto.net</option>';
-        echo '<option value="elvanto.eu"' . selected($instance['region'], 'elvanto.eu') . '>.elvanto.eu</option>';
+        echo '<option value="elvanto.com.au" ' . selected($instance['region'], 'elvanto.com.au') . '>.elvanto.com.au</option>';
+        echo '<option value="elvanto.net" ' . selected($instance['region'], 'elvanto.net') . '>.elvanto.net</option>';
+        echo '<option value="elvanto.eu" ' . selected($instance['region'], 'elvanto.eu') . '>.elvanto.eu</option>';
         echo '</select></p>';
         echo '<p>' . __('This is your region domain of Elvanto') . '</p>';
+        echo '<p><label for="' . $this->get_field_id('includeSocialLinks') .  '">' . __('Include Facebook/Google Login Links?') .'</label>';
+        echo '<select class="widefat" name="' . $this->get_field_name('includeSocialLinks') . '">';
+        echo '<option value="y" ' . selected($instance['includeSocialLinks'], 'y') . '>' . __('Yes, include Facebook/Google Login Links?') .'</option>';
+        echo '<option value="n" ' . selected($instance['includeSocialLinks'], 'n') . '>' . __('No, do not include Facebook/Google Login Links?') .'</option>';
+        echo '</select></p>';
+
     }
 
     // Save
@@ -68,6 +76,7 @@ class ElvantoLoginWidget extends WP_Widget {
         $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
         $instance['subdomain'] = (!empty($new_instance['subdomain'])) ? strip_tags($new_instance['subdomain']) : '';
         $instance['region'] = (!empty($new_instance['region'])) ? strip_tags($new_instance['region']) : '';
+        $instance['includeSocialLinks'] = (!empty($new_instance['includeSocialLinks'])) ? strip_tags($new_instance['includeSocialLinks']) : 'y';
         return $instance;
     }
 
